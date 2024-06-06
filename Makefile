@@ -1,5 +1,5 @@
-CXX=g++
-CC=gcc
+CXX=g++-9
+CC=gcc-9
 ARCH=avx2
 #VTUNE_HOME=/opt/intel/oneapi/vtune/2021.1.1
 MKLROOT=/opt/intel/oneapi/mkl/2021.1.1
@@ -23,7 +23,7 @@ all:
 	cd benchmarks/poa; $(MAKE) CXX=$(CXX) arch=$(ARCH) VTUNE_HOME=$(VTUNE_HOME)
 	cd benchmarks/pileup; $(MAKE) CC=$(CC) arch=$(ARCH) VTUNE_HOME=$(VTUNE_HOME)
 	cd benchmarks/kmer-cnt; $(MAKE) CXX=$(CXX) arch=$(ARCH) VTUNE_HOME=$(VTUNE_HOME)
-	cd benchmarks/grm/2.0/build_dynamic; $(MAKE) CC=$(CC) CXX=$(CXX) arch=$(ARCH) VTUNE_HOME=$(VTUNE_HOME) MKLROOT=$(MKLROOT) MKL_IOMP5_DIR=$(MKL_IOMP5_DIR) #needs MKL
+	#cd benchmarks/grm/2.0/build_dynamic; $(MAKE) CC=$(CC) CXX=$(CXX) arch=$(ARCH) VTUNE_HOME=$(VTUNE_HOME) MKLROOT=$(MKLROOT) MKL_IOMP5_DIR=$(MKL_IOMP5_DIR) #needs MKL
 
 gpu:
 	cd benchmarks/abea; $(MAKE) CUDA_LIB=$(CUDA_LIB)
@@ -40,4 +40,4 @@ clean:
 	cd benchmarks/poa; $(MAKE) clean
 	cd benchmarks/pileup; $(MAKE) clean
 	cd benchmarks/kmer-cnt; $(MAKE) clean
-	cd benchmarks/grm/2.0/build_dynamic; $(MAKE) clean
+	#cd benchmarks/grm/2.0/build_dynamic; $(MAKE) clean
